@@ -14,11 +14,11 @@
 
 ### Example Input
 
-    <https://fcc-url-shortener-ms-liy.herokuapp.com/new/https://www.google.com>
+    https://fcc-url-shortener-ms-liy.herokuapp.com/new/https://www.google.com
     
 或
 
-    <https://fcc-url-shortener-ms-liy.herokuapp.com/59cc754cd27ae075ba9dad82>
+    https://fcc-url-shortener-ms-liy.herokuapp.com/59cc754cd27ae075ba9dad82
 
 ### Example Output
 
