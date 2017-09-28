@@ -14,7 +14,7 @@ app.get('/', function(req, res){
 
 var baseUrl = 'https://fcc-url-shortener-ms-liy.herokuapp.com/';
 
-var mongoUrl = process.env.MONGO_URI || "mongodb://localhost:27017/urlshortenerjs";
+var mongoUrl = process.env.MONGO_URI || "mongodb://eszx:tfcyhuhb@ds155644.mlab.com:55644/urlshortenerjs";
 mongo.connect(mongoUrl, function(err, db) {
     if(err) throw err;
     db.createCollection("sites", function(err, res) {
