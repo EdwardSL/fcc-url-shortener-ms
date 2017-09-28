@@ -20,51 +20,60 @@ mongo.connect(mongoUrl, function(err, db) {
     db.createCollection("sites", function(err, res) {
         if (err) throw err;
         console.log("Collection created!");
+        db.close();
     });
-    var collection = db.collection("sites");
+});
 
-    app.get('/:id', function(req, res){
-        if(/^[0-9a-f]{24}$/.test(req.params.id)) {
-            var doc = {_id: ObjectId(req.params.id)};
-            collection.findOne(doc, function(err, result) {
+app.get('/:id', function(req, res){
+    if(/^[0-9a-f]{24}$/.test(req.params.id)) {
+        var doc = {_id: ObjectId(req.params.id)};
+        mongo.connect(mongoUrl, function(err, db) {
+            if(err) throw err;
+            db.collection("sites").findOne(doc, function(err, result) {
                 if (err) throw err;
                 if(result) {
                     res.redirect(result.url);
                 } else {
                     res.json({"error":"No short url found for given input"});
                 }
+                db.close();
             });
-        } else {
-            res.json({"error":"No short url found for given input"});
-        }
-    });
+        });
+    } else {
+        res.json({"error":"No short url found for given input"});
+    }
+});
     
-    app.get('/new/:url*', function(req, res){
-        if(validUrl.isUri(req.url.slice(5))) {
-            var url = req.url.slice(5);
-            var doc = {url: url};
-            collection.findOne(doc, function(err, result) {
+app.get('/new/:url*', function(req, res){
+    if(validUrl.isUri(req.url.slice(5))) {
+        var url = req.url.slice(5);
+        var doc = {url: url};
+        mongo.connect(mongoUrl, function(err, db) {
+            if(err) throw err;
+            db.collection("sites").findOne(doc, function(err, result) {
                 if (err) throw err;
                 if(result) {
                     res.json({
                         "original_url": result.url,
                         "short_url": baseUrl + result._id
                     });
+                    db.close();
                 } else {
-                    collection.insertOne(doc, function(err, result) {
+                    db.collection("sites").insertOne(doc, function(err, result) {
                         if (err) throw err;
                         res.json({
                             "original_url": url,
                             "short_url": baseUrl + result.insertedId
                         });
+                        db.close();
                     });
                 }
             });
-        } else {
-            res.json({"error":"URL invalid"});
-        }
-    });
-}); 
+        });
+    } else {
+        res.json({"error":"URL invalid"});
+    }
+});
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
