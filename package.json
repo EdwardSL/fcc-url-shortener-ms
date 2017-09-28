@@ -1,0 +1,29 @@
+{
+  "name": "fcc-url-shortener-ms",
+  "version": "0.0.0",
+  "description": "I can pass a URL as a parameter and I will receive a shortened URL in the JSON response. When I visit that shortened URL, it will redirect me to my original link.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwardSL/fcc-url-shortener-ms.git"
+  },
+  "author": "Li Y <eszxtfcyhuhb@gmail.com>",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "mongodb": "^2.2.31",
+    "socket.io": "~0.9.14",
+    "strftime": "^0.10.0",
+    "stylus": "^0.54.5",
+    "valid-url": "^1.0.9"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdwardSL/fcc-url-shortener-ms/issues"
+  },
+  "homepage": "https://github.com/EdwardSL/fcc-url-shortener-ms#readme"
+}
