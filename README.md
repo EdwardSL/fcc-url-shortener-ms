@@ -1,6 +1,6 @@
-# Timestamp Microservice
+# URL Shortener Microservice
 
-这个repository是用来完成freecodecamp的一个叫做“TURL Shortener Microservice的api project，更多细节请访问：
+这个repository是用来完成freecodecamp的一个叫做“URL Shortener Microservic”的api project，更多细节请访问：
 
 <https://www.freecodecamp.cn/challenges/url-shortener-microservice>
 
