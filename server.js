@@ -16,14 +16,6 @@ app.get('/', function(req, res){
 var baseUrl = 'https://fcc-url-shortener-ms-liy.herokuapp.com/';
 
 var mongoUrl = process.env.MONGO_URI;
-mongo.connect(mongoUrl, function(err, db) {
-    if(err) throw err;
-    db.createCollection("sites", function(err, res) {
-        if (err) throw err;
-        console.log("Collection created!");
-        db.close();
-    });
-});
 
 app.get('/:id', function(req, res){
     if(/^[0-9a-f]{24}$/.test(req.params.id)) {
