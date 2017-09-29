@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://eszx:tfcyhuhb@ds155644.mlab.com:55644/urlshortenerjs";
+var url = process.env.MONGO_URI;
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
